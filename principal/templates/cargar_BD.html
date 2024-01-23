@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block cabecera %}
+<h4 class="text-4xl font-semibold mb-4 text-black text-center">
+  Cargado la Base de Datos
+</h4>
+<br />
+<br />
+{% endblock %} {% block content %}
+<div class="text-center">
+  <p class="text-red-700 text-2xl">
+    Se han almacenado {{videojuegos|length}} videojuegos, {{generos|length}}
+    generos, {{plataformas|length}} plataformas, {{desarrolladores|length}} desarrolladores y {{compañias|length}} compañias.
+  </p>
+</div>
+{% endblock %}

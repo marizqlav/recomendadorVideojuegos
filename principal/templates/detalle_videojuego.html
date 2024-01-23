@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+<div class="text-center flex justify-center">
+  {% block cabecera %}
+  <h4 class="text-xl font-semibold mb-4 text-black text-center">
+    Detalles del videojuego:
+    <span class="text-rose-600">{{ videojuego.nombre }}</span>
+  </h4>
+  {% endblock %} {% block content %}
+  <div class="container mx-auto px-4 pt-16">
+    <div class="mt-8">
+      <img src="{{ videojuego.picture_url }}" />
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Nombre:
+            <span class="text-fuchsia-700 text-xl">{{ videojuego.nombre }} </span>
+          </p>
+        </a>
+      </div>
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Fecha de lanzamiento:
+            <span class="text-indigo-600 text-2xl">
+              {{ videojuego.fecha_lanzamiento }}
+            </span>
+          </p>
+        </a>
+      </div>
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Descripcion:
+            <span class="text-teal-700 text-2xl">
+              {{ videojuego.descripcion }}
+            </span>
+          </p>
+        </a>
+      </div>
+      <p class="text-black text-xl">Plataformas:</p>
+      {% if videojuego.plataformas.all|length  == 0  %}
+      <div class="flex items-center text-gray-400 text-sm mt-1 ml-16">
+        <p>
+          <span class="text-emerald-500 text-center text-2xl">
+            No hay plataformas
+          </span>
+        </p>
+        </div>
+        {% endif %}
+      {% for plataforma in videojuego.plataformas.all %}
+      <div class="flex items-center text-gray-400 text-sm mt-1 ml-16">
+        <a href="{% url 'detalle_plataforma' plataforma.id %}">
+          
+          <span class="text-emerald-500 text-center text-2xl underline">
+            {{ plataforma.nombre }}
+          </span>
+        </a>
+      </div>
+      {% endfor %} &nbsp;
+      <p class="text-black text-xl">Géneros:</p>
+      {% if videojuego.genero.all|length  == 0  %}
+      <div class="flex items-center text-gray-400 text-sm mt-1 ml-16">
+        <p>
+          <span class="text-lime-600 text-center text-2xl">
+            No hay géneros
+          </span>
+        </p>
+        </div>
+        {% endif %}
+      {% for g in videojuego.genero.all %}
+      <div class="flex items-center text-gray-400 text-sm mt-1 ml-16">
+        <p>
+          <span class="text-lime-600 text-center text-2xl">
+            {{ g.nombre }}
+          </span>
+        </p>
+      </div>
+      {% endfor %} &nbsp;
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Temas:
+            <span class="text-yellow-600 text-xl">{{ videojuego.temas }} </span>
+          </p>
+        </a>
+      </div>
+      <p class="text-black text-xl">Desarrolladores:</p>
+      {% if videojuego.desarrolladores.all|length  == 0  %}
+      <div class="flex items-center text-gray-400 text-sm mt-1 ml-16">
+        <p>
+          <span class="text-orange-500 text-center text-2xl">
+            No hay desarrolladores
+          </span>
+        </p>
+        </div>
+        {% endif %}
+        {% for desarrollador in videojuego.desarrolladores.all %}
+        <div class="flex items-center text-gray-400 text-sm mt-1 ml-16">
+          <p>
+            <span class="text-orange-500 text-center text-2xl">
+              {{ desarrollador.nombre }}
+            </span>
+          </p>
+        </div>
+        {% endfor %} &nbsp;
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>

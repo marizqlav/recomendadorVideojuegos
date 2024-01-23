@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block cabecera %}
+<div class="text-center">
+  <h4 class="text-2xl font-semibold mb-4 text-black text-center">
+    Búsqueda de Videojuegos por desarrollador o palabra en la descripción
+  </h4>
+  {% endblock %} {% block content %}
+  <div class="items-center justify-center text-center flex">
+    <form
+      method="post"
+      class="space-y-4 bg-gray-200 p-16 rounded shadow-2xl w-2/3 text-center"
+    >
+      {% csrf_token %} {{ form.as_div }}
+      <br />
+      <button
+        type="submit"
+        class="m-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Realizar Búsqueda
+      </button>
+    </form>
+  </div>
+  <hr />
+  {% if videojuegos %}
+  <div class="mt-4 ml-10 mr-10">
+    <h2 class="text-2xl font-bold mb-4 text-center text-black">
+      Total de Videojuegos encontrados:
+      <span class="text-red-600 text-3xl">{{videojuegos|length}}</span>
+    </h2>
+    <div class="items-center justify-center">
+      {% for dato in videojuegos %}
+      <div class="mt-8">
+        <img src="{{ dato.picture_url }}" />
+        <div class="mt-2">
+          <p class="text-lg mt-2 text-black">
+            Nombre:
+            <a
+              class="text-lg mt-2 hover:text-blue-500 text-black"
+              href="{% url 'detalle_videojuego' dato.id %}"
+            >
+              <span class="text-blue-600 text-xl hover:text-blue-300 underline"
+                >{{ dato.nombre }}
+              </span>
+            </a>
+          </p>
+          <p class="text-lg mt-2 text-black">
+            Fecha Lanzamiento:
+            <a class="text-lg mt-2 hover:text-blue-500 text-black">
+              <span class="text-amber-600 text-xl"
+                >{{ dato.fecha_lanzamiento|date:"Y-m-d" }}</span
+              >
+            </a>
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %} {% if form.is_valid %}
+  <div class="mt-4 ml-10 mr-10">
+    <h2 class="text-2xl font-bold mb-4 text-center text-red-500">
+      No se han encontrado videojuegos con los criterios de búsqueda
+    </h2>
+  </div>
+  {% endif %} {% endif %} &nbsp;
+</div>
+{% endblock %}

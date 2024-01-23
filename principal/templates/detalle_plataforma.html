@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+<div class="text-center flex justify-center">
+  {% block cabecera %}
+  <h4 class="text-xl font-semibold mb-4 text-black text-center">
+    Detalles de la plataforma:
+    <span class="text-rose-600">{{ plataforma.nombre }}</span>
+  </h4>
+  {% endblock %} {% block content %}
+  <div class="container mx-auto px-4 pt-16">
+    <div class="mt-8">
+      <img src="{{ plataforma.picture_url }}" />
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Nombre:
+            <span class="text-fuchsia-700 text-xl">{{ plataforma.nombre }} </span>
+          </p>
+        </a>
+      </div>
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Fecha de salida:
+            <span class="text-indigo-600 text-2xl">
+              {{ plataforma.fecha_salida }}
+            </span>
+          </p>
+        </a>
+      </div>
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Total videojuegos:
+            <span class="text-yellow-500 text-2xl">
+              {{ plataforma.total_videojuegos }}
+            </span>
+          </p>
+        </a>
+      </div>
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Compañia Plataforma:
+            <span class="text-teal-700 text-2xl">
+              {{ plataforma.compañia_plataforma.nombre }}
+            </span>
+          </p>
+        </a>
+      </div>
+      <div class="mt-2">
+        <a class="text-xl mt-2 text-black">
+          <p>
+            Precio Original:
+            <span class="text-red-400 text-2xl">
+              {{ plataforma.precio_original }} €
+            </span>
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>
