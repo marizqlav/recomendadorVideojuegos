@@ -1,0 +1,1 @@
+Este trabajo tiene como objetivo aplicar los conocimientos adquiridos en la asignatura de Acceso Inteligente a la Información a un proyecto individual. RecommenderVideoGamer es una aplicación web que usa la página https://www.giantbomb.com/ para extraer datos mediante Web Scraping sobre videojuegos y plataformas.
